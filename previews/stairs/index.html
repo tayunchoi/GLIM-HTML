@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'none'; media-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>한글 계단 · 자동 플레이 미리보기</title>
+<style>
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#151a33;font-family:'Jua','Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;-webkit-tap-highlight-color:transparent;user-select:none;}
+  #c{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);touch-action:none;background:#151a33;}
+  .ov{position:fixed;inset:0;background:rgba(21,26,51,.72);z-index:9;display:none;align-items:center;justify-content:center;}
+  .card{background:#fff;border-radius:28px;padding:30px 44px;min-width:420px;text-align:center;color:#2b2a3a;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+  .card h1{margin:0 0 4px;font-size:34px;font-weight:normal}
+  .card .big{font-size:56px;line-height:1;color:#ffb347;margin:4px 0 0;letter-spacing:6px}
+  .card .sub{font-size:18px;color:#8a879c;margin:8px 0 14px}
+  .card button{font-family:inherit;font-size:22px;padding:12px 30px;border-radius:999px;border:0;background:#ff8a3d;color:#fff;cursor:pointer;box-shadow:0 8px 0 #d96a1f;margin:4px}
+  .card button.alt{background:#8d7bd6;box-shadow:0 8px 0 #5f4fa8}
+  .card button:active{transform:translateY(4px)}
+@font-face{font-family:'Jua';src:url('assets/7a7b354e0ccf.woff') format('woff');font-weight:400;font-style:normal;font-display:block;}
+@font-face{font-family:'Noto Sans KR';src:url('assets/470a7e5a9d49.woff') format('woff');font-weight:400;font-style:normal;font-display:block;}
+@font-face{font-family:'Noto Color Emoji';src:url('assets/f72afadf81f6.woff') format('woff');font-weight:400;font-style:normal;font-display:block;}
+/* v6 completion screen and document frame. */
+html,body{background:#e7e8d8;color:#6f5546;font-family:'Jua','Noto Sans KR','Noto Color Emoji','Malgun Gothic','Apple SD Gothic Neo','DejaVu Sans',sans-serif;}
+#c{background:#f5f1df;}
+.ov{background:rgba(72,68,52,.46);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);padding:20px;box-sizing:border-box;}
+.card{box-sizing:border-box;min-width:0;width:min(520px,94vw);background:#fff9eb;border:2px solid #dfceb1;border-radius:30px;padding:34px 28px 30px;color:#6f5546;box-shadow:0 14px 42px rgba(74,59,39,.14);}
+.card h1{font-family:inherit;font-size:clamp(27px,4vw,38px);font-weight:normal;color:#6f5546;margin:0 0 12px;line-height:1.2;}
+.card .big{font-size:clamp(34px,7vw,54px);color:#d8b15f;letter-spacing:8px;line-height:1.2;}
+.card .sub{font-size:clamp(15px,2.2vw,18px);line-height:1.55;color:#958167;margin:15px 0 23px;}
+.card button{font-family:inherit;font-size:22px;padding:13px 25px;border:1.5px solid #719369;border-radius:18px;background:#84aa80;color:#fff9eb;cursor:pointer;box-shadow:0 5px 0 #678862;margin:6px;min-height:54px;}
+.card button.alt{background:#f5ead3;border-color:#d4bea0;color:#7e674e;box-shadow:0 5px 0 #c8b38f;}
+.card button:active{transform:translateY(3px);box-shadow:0 2px 0 #678862;}
+.card button.alt:active{box-shadow:0 2px 0 #c8b38f;}
+.card button:focus-visible{outline:3px solid #6f5546;outline-offset:6px;}
+@media(max-height:480px){.card{padding:18px 24px;}.card h1{font-size:28px;margin-bottom:8px;}.card .big{font-size:36px;}.card .sub{margin:8px 0 10px;}.card button{padding:9px 22px;min-height:44px;}}
+
+html,body{width:100%;height:100%;margin:0;overscroll-behavior:none;background:#eee9d7;}
+#c{left:0;top:0;transform:none;display:block;}
+
+#c{pointer-events:none;} .ov{display:none!important;}
+</style>
+</head>
+<body>
+<canvas id="c" aria-label="한글 계단 자동 시연: 그림을 보고 맞는 음절을 고르면 토끼가 계단을 올라갑니다."></canvas>
+<div id="clear" class="ov"><div class="card"><h1 id="clTitle">완주!</h1><div class="big" id="clStars">★★★</div><div class="sub" id="clSub"></div><button id="nextPan">다음 단계</button><button id="toMap" class="alt">지도 보기</button></div></div>
+
+<script src="engine.js"></script>
+<script src="preview.js"></script>
+</body>
+</html>

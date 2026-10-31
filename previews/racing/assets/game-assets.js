@@ -1,0 +1,1 @@
+window.GLIM_ASSETS={"rabbit/body": "./assets/rabbit-body.webp", "rabbit/armL": "./assets/rabbit-armL.webp", "rabbit/armR": "./assets/rabbit-armR.webp", "rabbit/legL": "./assets/rabbit-legL.webp", "rabbit/legR": "./assets/rabbit-legR.webp"};

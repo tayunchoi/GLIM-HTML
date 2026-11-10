@@ -18,7 +18,9 @@
     viewport.style.setProperty('--preview-scale', String(viewport.clientWidth / 1104));
   }
   function send(scene, action) {
-    scene.frame.contentWindow?.postMessage({type:'glim-preview-control',action},location.origin);
+    // 같은 출처로만 보냅니다. (출처가 'null'로 잡히는 미리보기 환경에서는 대상 창을 직접 지정한 메시지만 보냅니다.)
+    const target = location.origin && location.origin !== 'null' ? location.origin : '*';
+    scene.frame.contentWindow?.postMessage({type:'glim-preview-control',action},target);
   }
   function sync() {
     const active = scenes.get(selected);
